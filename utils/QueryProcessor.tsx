@@ -12,7 +12,11 @@ export default function QueryProcessor(query: string): string {
   }
 
   if (query.toLowerCase().includes("name")) {
-    return "acee3";
+    return "alexcheu";
+  }
+
+  if (query.toLowerCase().includes("api")) {
+    return "alexcheu";
   }
 
   return "";
