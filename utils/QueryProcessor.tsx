@@ -32,5 +32,15 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
+  if (query.toLowerCase().includes("largest")) {
+    const numbers = query.match(/-?\d+/g);
+    if (numbers && numbers.length >= 2) {
+      const largest = Math.max(...numbers.map((num) => parseInt(num, 10)));
+      return largest.toString();
+    } else {
+      return "Please provide at least two numbers to compare.";
+    }
+  }
+
   return "";
 }
