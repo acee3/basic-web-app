@@ -32,6 +32,43 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
+  // implement times and divide and minus
+  if (query.toLowerCase().includes("multiplied by") || query.toLowerCase().includes("times")) {
+    const numbers = query.match(/-?\d+/g);
+    if (numbers && numbers.length >= 2) {
+      const product = numbers
+        .slice(0, 2)
+        .map((num) => parseInt(num, 10))
+        .reduce((a, b) => a * b, 1);
+      return product.toString();
+    } else {
+      return "Please provide at least two numbers to multiply.";
+    }
+  }
+
+  if (query.toLowerCase().includes("minus")) {
+    const numbers = query.match(/-?\d+/g);
+    if (numbers && numbers.length >= 2) {
+      const difference = parseInt(numbers[0], 10) - parseInt(numbers[1], 10);
+      return difference.toString();
+    } else {
+      return "Please provide at least two numbers to subtract.";
+    }
+  }
+
+  if (query.toLowerCase().includes("divided by")) {
+    const numbers = query.match(/-?\d+/g);
+    if (numbers && numbers.length >= 2) {
+      if (parseInt(numbers[1], 10) === 0) {
+        return "Cannot divide by zero.";
+      }
+      const quotient = parseInt(numbers[0], 10) / parseInt(numbers[1], 10);
+      return quotient.toString();
+    } else {
+      return "Please provide at least two numbers to divide.";
+    }
+  }
+
   if (query.toLowerCase().includes("which of the following numbers is the largest")) {
     const numbers = query.match(/-?\d+/g);
     if (numbers && numbers.length >= 2) {
