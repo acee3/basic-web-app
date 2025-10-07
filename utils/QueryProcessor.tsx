@@ -19,5 +19,18 @@ export default function QueryProcessor(query: string): string {
     return "alexcheu";
   }
 
+  if (query.toLowerCase().includes("plus")) {
+    const numbers = query.match(/-?\d+/g);
+    if (numbers && numbers.length >= 2) {
+      const sum = numbers
+        .slice(0, 2)
+        .map((num) => parseInt(num, 10))
+        .reduce((a, b) => a + b, 0);
+      return sum.toString();
+    } else {
+      return "Please provide at least two numbers to add.";
+    }
+  }
+
   return "";
 }
