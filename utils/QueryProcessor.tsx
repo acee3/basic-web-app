@@ -32,7 +32,7 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
-  if (query.toLowerCase().includes("largest")) {
+  if (query.toLowerCase().includes("which of the following numbers is the largest")) {
     const numbers = query.match(/-?\d+/g);
     if (numbers && numbers.length >= 2) {
       const largest = Math.max(...numbers.map((num) => parseInt(num, 10)));
